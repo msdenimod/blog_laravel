@@ -26,7 +26,7 @@
                     <a href="{{ route('admin.post.index') }}" class="btn btn-block btn-info btn-sm"><< Назад</a>
                 </div>
                 <div class="col-12">
-                    <form action="{{ route('admin.post.update', $post->id) }}" method="post" class="mt-4">
+                    <form action="{{ route('admin.post.update', $post->id) }}" method="post" class="mt-4" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group w-25">
@@ -64,7 +64,7 @@
                                     style="width: 100%;">
                                 @foreach($tags as $tag)
                                     <option
-                                        {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : '' }}
+                                        {{ is_array($post->tags->pluck('id')->toArray() ) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? ' selected' : '' }}
                                         value="{{ $tag->id }}"
                                     >
                                         {{ $tag->title }}
@@ -74,6 +74,9 @@
                         </div>
                         <div class="form-group w-25">
                             <label for="exampleInputFile">Добавить превью</label>
+                            <div class="w-100">
+                                <img src="{{ url('storage/', $post->preview_image) }}" alt="preview_image" class="w-100">
+                            </div>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="exampleInputFile"
@@ -88,6 +91,9 @@
                         </div>
                         <div class="form-group w-25">
                             <label for="exampleInputFile">Добавить главное изображение</label>
+                            <div class="w-100">
+                                <img src="{{ url('storage/'. $post->main_image) }}" alt="main_image" class="w-100">
+                            </div>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="exampleInputFile"
