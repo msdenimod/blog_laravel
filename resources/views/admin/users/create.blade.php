@@ -29,9 +29,21 @@
                     <form action="{{ route('admin.user.store') }}" method="post" class="w-25 mt-4">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" name="title" placeholder="Имя пользователя">
+                            <input type="text" class="form-control" name="name" placeholder="Имя пользователя">
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email пользователя">
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Пароль">
+                            @error('password')
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <input type="submit" class="btn btn-primary" value="Добавить">
