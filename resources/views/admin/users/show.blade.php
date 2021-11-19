@@ -59,6 +59,10 @@
                                         <td>Email пользователя</td>
                                         <td>{{ $user->email }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Роль</td>
+                                        <td>{{ $roles[$user->role] }}</td>
+                                    </tr>
                                 </tbody>
                                 </table>
                             </div>

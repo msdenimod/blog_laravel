@@ -43,6 +43,7 @@
                                         <th>ID</th>
                                         <th>Имя пользователя</th>
                                         <th>Email пользователя</th>
+                                        <th>Роль</th>
                                         <th colspan="3">Действия</th>
                                     </tr>
                                     </thead>
@@ -52,6 +53,7 @@
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td>{{ $roles[$user->role] }}</td>
                                             <td><a href="{{ route('admin.user.show', $user->id) }}"><i
                                                         class="far fa-eye"></i></a></td>
                                             <td><a class="text-gray-dark"
